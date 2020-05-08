@@ -58,8 +58,8 @@ def process_files():
 	if request.method == 'POST':
 
 		# read labels and images from training set (IDX file format)
-		trainlabels=deconde_idx1_ubyte("train_set_for_comparisons/train-labels.idx1-ubyte")
-		trainimages=decode_idx3_ubyte("train_set_for_comparisons/train-images.idx3-ubyte")
+		trainlabels=deconde_idx1_ubyte("mnist_training_data/train-labels.idx1-ubyte")
+		trainimages=decode_idx3_ubyte("mnist_training_data/train-images.idx3-ubyte")
 
 
 		# get uploaded test images (PNG file format)
