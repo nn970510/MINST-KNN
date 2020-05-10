@@ -33,9 +33,9 @@ class KnnClassifier:
 		for i in range(len(self.testdata)):
 			time1=time.time()
 			thisp=np.tile(self.testdata[i],(len(self.trainingdata),1))
-			thisp=((thisp-self.trainingdata)**2)**0.5
+			thisp=(thisp-self.trainingdata)**2
 			thisp=thisp.T
-			thisp=sum(thisp)
+			thisp=sum(thisp)**0.5
 			time2=time.time()
 			rank=np.argsort(thisp)
 			firstten=[]
