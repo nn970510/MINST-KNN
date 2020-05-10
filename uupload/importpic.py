@@ -42,7 +42,7 @@ trainlabels=deconde_idx1_ubyte("./train-labels.idx1-ubyte")
 trainimages=decode_idx3_ubyte("./train-images.idx3-ubyte")
 testlabels=deconde_idx1_ubyte("./t10k-labels.idx1-ubyte")
 testimages=decode_idx3_ubyte("./t10k-images.idx3-ubyte")
-classfier=Knndraft.KnnClassifier(1, trainimages, trainlabels, testimages, 3)
+classfier=Knndraft.KnnClassifier(0.1, trainimages, trainlabels, testimages, 3)
 predict=classfier.test(1)
 print("lenth of predict:",len(predict))
 correct=0

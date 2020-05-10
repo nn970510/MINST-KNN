@@ -18,14 +18,14 @@ class KnnClassifier:
 		self.testdata=self.testdata[0]
 		self.trainingdata=self.trainingdata[0]
 		print ("Done for Subsampling, now there are: ")
-		print (len(self.trainingdata),"traingingdata")
-		print ("each traingdata has", np.size(self.trainingdata,1), "feature")
 
 	def test(self, sb):
 		tstime=0
 		tctime=0
 		if sb!=0:
 			self.subsampling()
+		print (len(self.trainingdata),"traingingdata")
+		print ("each traingdata has", np.size(self.trainingdata,1), "feature")		
 		self.testdata=self.testdata.reshape(int(len(self.testdata)/len(self.testdata[0])),len(self.testdata[0])*len(self.testdata[0]))
 		self.trainingdata=self.trainingdata.reshape(int(len(self.trainingdata)/len(self.trainingdata[0])),len(self.trainingdata[0])*len(self.trainingdata[0]))
 		testres=[]
