@@ -2,7 +2,7 @@
 import numpy as np
 import struct
 from PIL import Image
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from KNearestNeighbors import KnnClassifier
 import json
 
@@ -11,7 +11,7 @@ app = Flask('knn_image_classifier')
 
 
 # decoder for training labels
-def deconde_idx1_ubyte(filename):
+def decode_idx1_ubyte(filename):
 	bin_data = open(filename, 'rb').read()
 
 	offset = 0
@@ -55,10 +55,11 @@ def upload_files():
 # result page after submit	
 @app.route('/process', methods=['POST'])
 def process_files():
+	val = ' '
 	if request.method == 'POST':
 
 		# read labels and images from training set (IDX file format)
-		trainlabels=deconde_idx1_ubyte("mnist_training_data/train-labels.idx1-ubyte")
+		trainlabels=decode_idx1_ubyte("mnist_training_data/train-labels.idx1-ubyte")
 		trainimages=decode_idx3_ubyte("mnist_training_data/train-images.idx3-ubyte")
 
 
@@ -80,13 +81,17 @@ def process_files():
 			# k = 3 
 			classfier = KnnClassifier(1, trainimages, trainlabels, itest, 3)
 			predict = classfier.test(1)
-			dict_test_image_predictions[file.filename] = str(predict[0])
+			dict_test_image_predictions[file.filename] = predict[0]
+			val += str(predict[0]) + " "
+
 			print('----------------------------------------------------------------------')
 
+	#return str(len(uploaded_files)) + ' images classified successfully.\n' + 'Images vs Digits -> \n' + \
+	return val
 
-	return str(len(uploaded_files)) + ' images classified successfully.\n' + 'Images vs Digits -> \n' + \
-		json.dumps(dict_test_image_predictions)
-
+@app.route('/30.gif')
+def upload_loadingscreen():
+	return send_file('templates/30.gif', mimetype='image/gif')
 		
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=8080)

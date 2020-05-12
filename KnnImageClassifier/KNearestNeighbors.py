@@ -1,5 +1,6 @@
 import numpy as np
 import time
+
 #for now I random create training data, testdata and traininglabel
 #I expect traininglabel as an array length 60,000
 #I expect trainingdata as an matrix 1,680,000 (60000*28)*28
