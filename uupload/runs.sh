@@ -1,0 +1,10 @@
+python importpictest.py -t 10 -d 1 -k 3 -s 50
+python importpictest.py -t 10 -d 0 -k 3 -s 50
+python importpictest.py -t 20 -d 1 -k 3 -s 50
+python importpictest.py -t 20 -d 0 -k 3 -s 50
+python importpictest.py -t 30 -d 1 -k 3 -s 50
+python importpictest.py -t 30 -d 0 -k 3 -s 50
+python importpictest.py -t 40 -d 1 -k 3 -s 50
+python importpictest.py -t 40 -d 0 -k 3 -s 50
+python importpictest.py -t 50 -d 1 -k 3 -s 50
+python importpictest.py -t 50 -d 0 -k 3 -s 50
